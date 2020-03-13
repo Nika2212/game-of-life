@@ -4,7 +4,7 @@ const canvasWidth = canvas.width || 300;
 const canvasHeight = canvas.height || 300;
 const initialState = 'RANDOM';
 const cellDimension = 5;
-let initialLifePercent = 10;
+let initialLifePercent = 5;
 let generationInterval = null;
 let generationIntervalTime = 1000 / 24;
 let cellArray = [];
@@ -14,11 +14,12 @@ class Cell {
     x;
     y;
     isAlive;
+    colorArray = ["#b3e5fc", "#81d4fa", "#4fc3f7", "#29b6f6"];
 
     render() {
         if (this.isAlive) {
             context.beginPath();
-            context.fillStyle = "#a0daeb";
+            context.fillStyle = this.colorArray[Math.round(Math.random() * (this.colorArray.length))];
             context.fillRect(this.x, this.y, cellDimension, cellDimension);
         }
     }
@@ -80,8 +81,6 @@ function generateLife() {
         cellArray[middleIndex][middleIndex - 1].isAlive = true;
         cellArray[middleIndex][middleIndex + 1].isAlive = true;
     }
-
-    console.log(initialLifePercent);
 }
 function renderGuideLines() {
     const horizontalRenderSteps = canvasWidth / cellDimension;
