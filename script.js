@@ -4,9 +4,9 @@ const canvasWidth = canvas.width || 300;
 const canvasHeight = canvas.height || 300;
 const initialState = 'RANDOM';
 const cellDimension = 5;
-let initialLifePercent = 5;
+let initialLifePercent = 25;
 let generationInterval = null;
-let generationIntervalTime = 1000 / 24;
+let generationIntervalTime = 1000 / 60;
 let cellArray = [];
 let cellArrayModified = [];
 
@@ -167,7 +167,6 @@ function canvasRender() {
     renderCellArray();
     prepareNextGeneration();
 }
-
 function initialization() {
     document.body.addEventListener("click", generateLife, true);
 
